@@ -3,17 +3,18 @@
 namespace Upline\NovaLinkField;
 
 use Closure;
-use Laravel\Nova\Exceptions\HelperNotSupported;
 use Laravel\Nova\Fields\Field;
 
 class Link extends Field
 {
     private Closure|null $anchorComputedCallback = null;
+
     private string|null $anchorAttribute = null;
 
     private string|null $anchorValue = null;
 
     private Closure|string|null $targetComputedCallback = null;
+
     private string $targetValue = '_self';
 
     /**
@@ -22,6 +23,7 @@ class Link extends Field
      * @var string
      */
     public $component = 'nova-link-field';
+
     /**
      * @var true
      */
@@ -35,22 +37,25 @@ class Link extends Field
         } else {
             $this->anchorAttribute = $attribute;
         }
+
         return $this;
     }
 
     /**
-     * @param Closure|'_blank'|'_self' $attribute
+     * @param  Closure|'_blank'|'_self'  $attribute
      * @return $this
      */
     public function target(Closure|string $attribute): static
     {
         $this->targetComputedCallback = $attribute;
+
         return $this;
     }
 
     public function asHtml()
     {
         $this->asHtml = true;
+
         return $this;
     }
 
@@ -74,10 +79,10 @@ class Link extends Field
     public function resolveForDisplay($resource, $attribute = null)
     {
         parent::resolveForDisplay($resource, $attribute);
-        if (!$this->anchorValue) {
+        if (! $this->anchorValue) {
             $this->resolveAnchorAttribute($resource);
         }
-        if (!$this->targetValue) {
+        if (! $this->targetValue) {
             $this->resolveTarget($resource);
         }
     }
@@ -108,11 +113,12 @@ class Link extends Field
 
     private function resolveTarget($resource)
     {
-        if (!$this->targetComputedCallback) {
+        if (! $this->targetComputedCallback) {
             return;
         }
         if ($this->targetComputedCallback instanceof Closure) {
             $this->targetValue = call_user_func($this->targetComputedCallback, $resource);
+
             return;
         }
 
