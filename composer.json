@@ -1,36 +1,48 @@
 {
-    "name": "upline/nova-link-field",
-    "description": "A Laravel Nova field.",
-    "keywords": [
-        "laravel",
-        "nova"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Aleksei Orlov",
-            "email": "ysywix@gmail.com",
-            "homepage": "https://github.com/vaiil"
-        }
-    ],
-    "require": {
-        "php": "^8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Upline\\NovaLinkField\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Upline\\NovaLinkField\\FieldServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "upline/nova-link-field",
+  "description": "A Laravel Nova field.",
+  "keywords": [
+    "laravel",
+    "nova",
+    "field",
+    "link"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aleksei Orlov",
+      "email": "ysywix@gmail.com",
+      "homepage": "https://github.com/vaiil"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "laravel/nova": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Upline\\NovaLinkField\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Upline\\NovaLinkField\\FieldServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "laravel/pint": "^1.10"
+  }
 }
